@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import {init} from '@rematch/core';
 import {Provider} from 'react-redux';
 import {app} from './models/appModel';
+import AppNavigator from "./navigation/AppNavigator";
 
 //Generation du Redux Store
 const store = init({
@@ -12,9 +13,7 @@ const store = init({
 export default function App() {
   return (
   <Provider store={store}>
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+   <AppNavigator />
   </Provider>
   );
 }
