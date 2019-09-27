@@ -14,7 +14,7 @@ const styleSheet = {
         alignItems: 'center',
     },
     nameStyle: {
-        color: 'red',
+        color: 'pink',
         fontSize: 25,
         fontWeight: 'bold',
     },

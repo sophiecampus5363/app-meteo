@@ -6,19 +6,9 @@ import {useDispatch, useSelector} from "react-redux";
 
 const AuthLoadingScreen = props => {
 
-    const name = useSelector()
-
-state => state.app.name()
-
-    const dispatch = useDispatch()
-
-    dispatch.app.setName('')
-
-
-
-    //_bootstrapAsync = async () => {
-      //  const userToken = await AsyncStorage.getItem('name');
-      //  props.navigation.navigate(userToken ? 'App' : 'Auth');
+      _bootstrapAsync = async () => {
+       const userToken = await AsyncStorage.getItem('name');
+       props.navigation.navigate(userToken ? 'App' : 'Auth');
     };
 
     useEffect(() => {
