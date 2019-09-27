@@ -16,13 +16,13 @@ const styleSheet = {
     },
     label: {
         color: 'black',
-        fontSize: 18,
+        fontSize: 24,
     },
     input: {
     width: '100%',
     height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
+    borderColor: 'black',
+    borderWidth: 2,
     },
 };
 
@@ -40,20 +40,21 @@ const styleSheet = {
 
         return (
             <View style={styleSheet.container}>
-                <Text style={styleSheet.label}> Prénom </Text>
+                <Text style={styleSheet.label}> C'est quoi ton p'tit nom? </Text>
                 <TextInput
                     style={styleSheet.input}
                     onChangeText={(text) => setName(text)}
+                    onSubmitEditing={handleSubmit}
                     value={name}
                 />
                 <Button
                     onPress={handleSubmit}
-                    title="OK"
-                    color="#841584"
+                    title="Envoyer"
+                    color="#ff79b4"
                 />
             </View>
         );
-    }
+    };
 
 IntroFormScreen.propTypes = {
         dispatch: PropTypes.func.isRequired,

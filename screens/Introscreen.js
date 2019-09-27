@@ -26,7 +26,6 @@ const IntroScreen = props => {
             const temp = await AsyncStorage.getItem('name');
             setName(temp);
         }
-
         getName();
     }, []);
 
@@ -43,11 +42,11 @@ const IntroScreen = props => {
             <Text style={styleSheet.nameStyle} > {name} </Text>
         </View>
     );
-}
+};
 
 IntroScreen.propTypes = {
-    navigation: Proptypes.shape({
-        navigate: Proptypes.func,
+    navigation: PropTypes.shape({
+        navigate: PropTypes.func,
     }).isRequired,
 };
 
