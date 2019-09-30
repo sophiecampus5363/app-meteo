@@ -1,9 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {init} from '@rematch/core';
+import {createAppContainer} from "react-navigation";
 import {Provider} from 'react-redux';
 import {app} from './models/appModel';
 import AppNavigator from "./navigation/AppNavigator";
+
+
 
 //Generation du Redux Store
 const store = init({
@@ -26,3 +29,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+
+

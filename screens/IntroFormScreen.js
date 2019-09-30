@@ -19,10 +19,12 @@ const styleSheet = {
         fontSize: 24,
     },
     input: {
-    width: '100%',
+    width: '80%',
+    margin: 15,
     height: 40,
     borderColor: 'black',
     borderWidth: 2,
+    padding: 10,
     },
 };
 
@@ -46,6 +48,7 @@ const styleSheet = {
                     onChangeText={(text) => setName(text)}
                     onSubmitEditing={handleSubmit}
                     value={name}
+                    placeholder={'Germaine'}
                 />
                 <Button
                     onPress={handleSubmit}
