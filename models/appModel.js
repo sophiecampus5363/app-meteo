@@ -1,8 +1,8 @@
-import { requestGet} from "../utils/requestAPI";
+import {requestGet} from "../utils/requestAPI";
 
 export const app = {
     state: {
-        name:'',
+        name: '',
         informations: {},
     },
     reducers: {
@@ -13,12 +13,17 @@ export const app = {
             return {...state, informations};
         },
     },
-    effects:(dispatch) => ({
-        async getMeteoInformations() {
-            const response = await requestGet('weather', 'q=valence');
-            if (response) {
-                this.setInformations(response);
+    effects: (dispatch) => ({
+        async getMeteoInformations(location) {
+            console.log(location);
+            if (location) {
+                const {coords: {latitude, longitude}} = location;
+                const response = await requestGet('weather', `lat=${latitude}&lon=${longitude}`);
+                if (response) {
+                    this.setInformations(response);
+                }
             }
         }
     })
+
 };

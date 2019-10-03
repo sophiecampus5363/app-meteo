@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {View, Text, TextInput, Button, Dimensions, StyleSheet} from "react-native";
+import {View, Text, TextInput, Button, Dimensions, StyleSheet, FlatList} from "react-native";
 import * as navigation from "react-navigation";
 import { TabNavigator } from "react-navigation";
+
 
 
 const {width} = Dimensions.get('window');
@@ -64,7 +65,7 @@ return (
         <Button
             onPress={handleSubmit}
             title="Envoyer"
-            color="#ff79b4"
+            color="gold"
         />
     </View>
 );

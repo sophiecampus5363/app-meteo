@@ -1,6 +1,7 @@
 import React from 'react';
-import {createAppContainer} from "react-navigation";
-import { createBottomTabNavigator} from 'react-navigation-tabs';
+import {createStackNavigator} from 'react-navigation-stack'
+import {createAppContainer, createSwitchNavigator} from "react-navigation";
+import {createBottomTabNavigator} from 'react-navigation-tabs';
 import StyleSheet from "react-native";
 import HomeScreen from "../screens/HomeScreen";
 import AuthLoadingScreen from "../screens/AuthLoadingScreen";
@@ -8,98 +9,130 @@ import IntroScreen from "../screens/Introscreen";
 import IntroFormScreen from "../screens/IntroFormScreen";
 import AddCityScreen from "../screens/AddCityScreen";
 import EditScreen from "../screens/EditScreen";
-import Icons from "react-native-vector-icons/Ionicons";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
+const AppStack =
+    createBottomTabNavigator({
 
-const weatherTabNavigator = createBottomTabNavigator(
-    {
-        HomeScreen: {
-            screen: HomeScreen,
-            navigationOptions: {
-              tabBarLabel:'Home',
-              tabBarIcon:({tintColor}) => (
-                  <Icon name="ios-home" size={24} />
-              )
-          }
+            Home: {
+                screen: HomeScreen,
+                navigationOptions: {
+                    title: 'Accueil',
+
+                }
+            },
+
+            AddCityScreen: {
+                screen: AddCityScreen,
+                navigationOptions: {
+                    title: 'Ajouter',
+
+                }
+            },
+
+            EditScreen: {
+                screen: EditScreen,
+                navigationOptions: {
+                    title: 'Prénom',
+
+                }
+            }
         },
-
-        AddCityScreen: {
-            screen: AddCityScreen
-        },
-
-        EditScreen: {
-            screen: EditScreen
-        },
-
-        // AuthLoadingScreen: {
-        //     screen: AuthLoadingScreen
-        // },
-        //
-        //
-        // IntroScreen: {
-        //     screen: IntroScreen
-        // },
-        //
-        // IntroFormScreen: {
-        //     screen: IntroFormScreen
-        // }
-    },
-
 
 {
-    initialRouteName: 'AuthLoadingScreen',
+    defaultNavigationOptions: ({navigation}) => ({
+        tabBarIcon: ({ focused, horizontal, tintColor}) => {
+            const { routeName } = navigation.state;
+            let IconComponent = Ionicons;
+            let iconName;
+            switch (routeName){
+                case 'Home':
+                    iconName = `ios-home`;
+                    break;
+                case 'AddCityScreen':
+                    iconName= `ios-add-circle-outline`;
+                    break;
+                case 'EditScreen':
+                    iconName= `ios-person`;
+                    break;
+            }
 
-
-        tabBarOptions: {
-        activeTintColor: 'white',
-        inactiveTintColor: 'gainsboro',
+            return <IconComponent name={iconName} size={30} color={tintColor}/>;
+        },
+    }),
+    tabBarOptions: {
         activeBackgroundColor: 'skyblue',
         inactiveBackgroundColor: 'skyblue',
-        justifyContent: 'center',
-        alignItems: 'center',
-
+        activeTintColor: 'white',
+        inactiveTintColor: 'gainsboro',
         showLabel: false,
-        showIcon: true,
-
-
-        },
-
-
-
-
+        showIcon: true
 
     }
+})
 
-// export default createBottomTabNavigator({
+
+
+
+
+
+const AuthStack =
+    createStackNavigator({SignIn: IntroFormScreen, Welcome: IntroScreen});
+
+
+// const weatherTabNavigator =
+//     createBottomTabNavigator({
 //         HomeScreen: {
-//             screen: HomeScreen,
-//           navigationOptions: {
-//               tabBarLabel:'Home',
-//               tabBarIcon:({tintColor}) => (
-//                   <Icon name="ios-home" size={24} />
-//               )
-//           }
-//         },
+//             screen: AuthStack,
+//             navigationOptions: {
+//                 title: 'Accueil',
 //
+//             }
+//         },
 //         AddCityScreen: {
 //             screen: AddCityScreen,
 //             navigationOptions: {
-//               tabBarLabel:'Home',
-//               tabBarIcon:({tintColor}) => (
-//                   <Icon name="ios-settings" size={24} />
-//               )
+//                 title: 'Ajouter',
+//
+//
 //             }
 //         },
 //
 //         EditScreen: {
-//             screen: EditScreen
+//             screen: EditScreen,
+//             navigationOptions: {
+//                 title: 'Modifier',
+//
+//
+//             }
 //         }
-// })
+//     },
+//
+// {
+//     tabBarOptions: {
+//         activeBackgroundColor: 'skyblue',
+//         inactiveBackgroundColor: 'skyblue',
+//         activeTintColor: 'white'
+//     }
+//
+//
+//
+//
+//     })
+
+// export default createAppContainer(weatherTabNavigator)
+
+export default createAppContainer(createSwitchNavigator(
+    {
+        AuthLoading: AuthLoadingScreen,
+        App: AppStack,
+        Auth: AuthStack,
+    },
+    {
+        initialRouteName: 'AuthLoading',
+    }
+));
 
 
 
-
-
-
-export default createAppContainer(weatherTabNavigator)

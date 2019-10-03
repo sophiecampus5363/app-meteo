@@ -61,7 +61,7 @@ return (
         <Button
             onPress={handleSubmit}
             title="Envoyer"
-            color="#ff79b4"
+            color="gold"
         />
     </View>
 );

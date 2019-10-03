@@ -51,9 +51,10 @@ const styleSheet = {
                     placeholder={'Germaine'}
                 />
                 <Button
-                    onPress={handleSubmit}
+                    // onPress={handleSubmit}
+                    onPress={() => this._updateName()}
                     title="Envoyer"
-                    color="#ff79b4"
+                    color="gold"
                 />
             </View>
         );
@@ -66,6 +67,8 @@ IntroFormScreen.propTypes = {
         }).isRequired,
 };
 
-    export default connect()(IntroFormScreen);
+
+
+export default connect()(IntroFormScreen);
 
 

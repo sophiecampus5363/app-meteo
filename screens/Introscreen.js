@@ -32,7 +32,7 @@ const IntroScreen = props => {
     useEffect(() => {
         setTimeout(() => {
             props.navigation.navigate('App');
-        }, 5000);
+        }, 1000);
     }, []);
 
     const [name, setName] = useState('');
